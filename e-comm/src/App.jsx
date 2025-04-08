@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Chatbot from './pages/Chatbot'
 import Navbar from './components/Navbar' 
+
 function App() {
 
 
