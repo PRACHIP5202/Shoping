@@ -6,8 +6,8 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getAllProducts().then((data) => {
-      setProducts(data);
+    getAllProducts().then((daa) => {
+      setProducts(daa);
     });
   }, []);
 
@@ -20,7 +20,7 @@ function Home() {
             <img src={p.image} alt={p.title} style={{ width: '100px', height: '100px' }} />
             <h4>{p.title.slice(0, 30)}...</h4>
             <p>${p.price}</p>
-            <Link to={`/product/${p.id}`}>View</Link>
+            <Link to={`/products/${p.id}`}>View</Link>
           </div>
         ))}
       </div>
