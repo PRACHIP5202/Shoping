@@ -3,6 +3,7 @@ import {useContext} from 'react'
 import {cartContext} from '../context/CartContext'
 import '../styles/CartPage.css'
 
+
 function CartPage() {
   const {cartItems, removeFromCart, incrementQty, decrementQty}= useContext(cartContext);
   const totalAmount = cartItems.reduce((total, item) => total + item.price* item.quantity, 0);
@@ -39,8 +40,11 @@ function CartPage() {
                 </ul>
             )
         }
+        {cartItems.length > 0 && (
+            <button onClick={() => navigate("/checkout")}>Proceed to Checkout</button>
+        )}
+        
     </div>
   );
 }
-
 export default CartPage;

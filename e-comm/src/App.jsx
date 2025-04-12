@@ -5,7 +5,8 @@ import Home from './pages/Home'
 import CartPage from './pages/CartPage'
 import Chatbot from './pages/Chatbot'
 import Navbar from './components/Navbar' 
-
+import CheckoutPage from './pages/CheckoutPage'
+import SuccessPage from './pages/SuccessPage'
 function App() {
 
 
@@ -17,6 +18,8 @@ function App() {
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/products/:id" element={<Productdetails/>} />
           <Route path="/chat" element={<Chatbot/>} /> 
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
         </Routes>
     </div>
   )
