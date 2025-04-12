@@ -5,7 +5,7 @@ import '../styles/CartPage.css'
 
 function CartPage() {
   const {cartItems, removeFromCart}= useContext(cartContext);
-  const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+  const totalAmount = cartItems.reduce((total, item) => total + item.price* item.quantity, 0);
   return(
     <div className="cart-page">
         <h2>Ur Cart</h2>
@@ -19,6 +19,7 @@ function CartPage() {
                             <div classNme="item-details">
                                 <h4>{items.title}</h4>
                                 <p>Price:  ${items.price}</p>
+                                <p>Quantity: {items.quantity}</p>
                             </div>
                             <button className="remove-btn" onClick={()=> removeFromCart(items.id)}>Remove</button>
 

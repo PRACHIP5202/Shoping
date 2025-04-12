@@ -6,12 +6,16 @@ export function CartProvider({children}){
   const [cartItems, setCartItems]= useState([]);
 
   const addToCart=(product)=>{
-    const isAlreadyInCart = cartItems.some((item) => item.id === product.id);
-    if(!isAlreadyInCart){
-      setCartItems((prevItems)=>[...prevItems, product]);
+    const existingProd = cartItems.find((item) => item.id === product.id);
+    if(existingProd){
+      setCartItems((prevItems) => 
+        prevItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
     }
     else{
-      alert("Item already in cart");
+      setCartItems((prevItems) => [...prevItems, {...product, quantity: 1}]);
     }
 
     
