@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Productdetails from './pages/Productdetails'
 import Home from './pages/Home'
-import Cart from './pages/Cart'
+import CartPage from './pages/CartPage'
 import Chatbot from './pages/Chatbot'
 import Navbar from './components/Navbar' 
 
@@ -15,7 +15,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/cart" element={<Cart/>} />
+          <Route path="/cart" element={<CartPage/>} />
           <Route path="/products/:id" element={<Productdetails/>} />
           <Route path="/chat" element={<Chatbot/>} /> 
         </Routes>

@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { cartContext } from '../context/CartContext';
 
 function Productdetails() {
+
+  const { addToCart } = useContext(cartContext);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -21,7 +24,12 @@ function Productdetails() {
       <p><strong>Price:</strong> ${product.price}</p>
       <p><strong>Description:</strong> {product.description}</p>
       <p><strong>Category:</strong> {product.category}</p>
-    </div>
+
+      <button onClick={() => addToCart(product)} style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: '#333', color: '#fff', border: 'none', borderRadius: '4px' }}>
+        Add to Cart
+      </button>
+
+      </div>
   );
 }
 
