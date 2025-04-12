@@ -7,6 +7,7 @@ function Navbar() {
       <Link to="/cart" style={{ marginRight: "1rem" }}>Cart</Link>
       <Link to="/chat" style={{ marginRight: "1rem" }}>Bot</Link>
       <Link to="/products" style={{ marginRight: "1rem" }}>Productdetails</Link>
+      <Link to="/cart"> Go to cart </Link>  
       
     </nav>
   );
