@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getAllProducts } from '../services/Api';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { cartContext } from '../context/CartContext';
 
 function Home() {
   const [products, setProducts] = useState([]);
+
+  const {addToCart}= useContext(cartContext);
 
   useEffect(() => {
     getAllProducts().then((daa) => {
@@ -21,6 +25,7 @@ function Home() {
             <h4>{p.title.slice(0, 30)}...</h4>
             <p>${p.price}</p>
             <Link to={`/products/${p.id}`}>View</Link>
+            <button onClick={()=> {addToCart(p)}}>Add to cart</button>
           </div>
         ))}
       </div>
