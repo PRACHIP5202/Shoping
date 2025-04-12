@@ -17,11 +17,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   )
 
 
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-//     <CartProvider>
-//       <App />
-//     </CartProvider>
-
-//   </StrictMode>,
-// )

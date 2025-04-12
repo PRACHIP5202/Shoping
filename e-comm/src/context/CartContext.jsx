@@ -7,9 +7,14 @@ export function CartProvider({children}){
   const addToCart=(product)=>{
     setCartItems((prevItems)=>[...prevItems, product]);
   }
+
+  const removeFromCart=(productId)=>{
+    setCartItems((prevItems)=> prevItems.filter(item => item.id !== productId));
+  }
   const value={
     cartItems,
-    addToCart
+    addToCart,
+    removeFromCart 
   };
   return(
     <cartContext.Provider value={value}> 
