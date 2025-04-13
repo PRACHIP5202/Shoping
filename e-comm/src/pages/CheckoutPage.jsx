@@ -13,26 +13,58 @@ const CheckoutPage = () => {
     navigate("/success");
   };
 
+
+  const totalAmount = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Checkout</h2>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={formData.name}
-        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        required
-      />
+      <div style={{ marginBottom: "20px" }}>
+        <h4>Order Summary</h4>
+        <ul style={{ listStyleType: "none", padding: 0 }}>
+          {cartItems.map((item, index) => (
+            <li key={index} style={{ marginBottom: "10px" }}>
+              <img src={item.image} alt={item.title} style={{ width: "40px", height: "40px", marginRight: "10px" }} />
+              <span>{item.title}</span> - 
+              <span style={{
+                backgroundColor: "#ec2261",
+                color: "white",
+                borderRadius: "12px",
+                padding: "2px 8px",
+                marginLeft: "10px",
+                fontSize: "12px"
+              }}>
+                {item.quantity}
+                < /span> 
+                
+                 x ₹{item.price}
+            </li>
+          ))}
+        </ul> 
+        <h4>Total Amount: ₹{totalAmount}</h4>
+      </div>
 
-      <textarea
+
+      <div style={{ marginBottom: "20px" }} >
+        <input
+          type="text"
+          placeholder="Name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+        />
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <textarea
         placeholder="Address"
         value={formData.address}
         onChange={(e) => setFormData({ ...formData, address: e.target.value })}
         required
       />
-
-      <select
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <select
         value={formData.payment}
         onChange={(e) => setFormData({ ...formData, payment: e.target.value })}
         required
@@ -40,9 +72,12 @@ const CheckoutPage = () => {
         <option value="">Select Payment</option>
         <option value="card">Card</option>
         <option value="cash">Cash on Delivery</option>
+        <option value="upi">UPI</option>
       </select>
-
-      <button type="submit">Place Order</button>
+      </div>
+      <div style={{ marginBottom: "20px" }}>
+        <button type="submit">Place Order</button>
+      </div>
     </form>
   );
 };
