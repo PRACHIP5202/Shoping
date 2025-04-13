@@ -43,7 +43,8 @@ export function CartProvider({children}){
     addToCart,
     removeFromCart, 
     incrementQty,
-    decrementQty
+    decrementQty,
+    setCartItems
   };
   return(
     <cartContext.Provider value={value}> 

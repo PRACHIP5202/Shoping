@@ -2,9 +2,11 @@ import React from 'react'
 import {useContext} from 'react'
 import {cartContext} from '../context/CartContext'
 import '../styles/CartPage.css'
+import { useNavigate } from 'react-router-dom';
 
 
 function CartPage() {
+    const navigate = useNavigate(); 
   const {cartItems, removeFromCart, incrementQty, decrementQty}= useContext(cartContext);
   const totalAmount = cartItems.reduce((total, item) => total + item.price* item.quantity, 0);
   return(
@@ -17,7 +19,7 @@ function CartPage() {
                     { cartItems.map( (items, index)=> (
                         <div className="cart-item" key={index}>
                             <img src={items.image} alt={items.title} style={{ width: '100px', height: '100px' }} />
-                            <div classNme="item-details">
+                            <div className="item-details">
                                 <h4>{items.title}</h4>
                                 <p>Price:  ${items.price}</p>
 

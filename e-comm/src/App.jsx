@@ -7,21 +7,24 @@ import Chatbot from './pages/Chatbot'
 import Navbar from './components/Navbar' 
 import CheckoutPage from './pages/CheckoutPage'
 import SuccessPage from './pages/SuccessPage'
+import { CartProvider } from './context/CartContext'
 function App() {
 
 
   return (
-    <div>
-        <Navbar />
-        <Routes>
+
+        <CartProvider>  
+          <Navbar />
+          <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/products/:id" element={<Productdetails/>} />
           <Route path="/chat" element={<Chatbot/>} /> 
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/success" element={<SuccessPage />} />
-        </Routes>
-    </div>
+          </Routes>
+        </CartProvider>
+       
   )
 }
 

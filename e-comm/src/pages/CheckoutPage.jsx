@@ -9,8 +9,7 @@ const CheckoutPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can send order to backend here
-    setCartItems([]); // Clear cart
+    setCartItems([]); 
     navigate("/success");
   };
 
