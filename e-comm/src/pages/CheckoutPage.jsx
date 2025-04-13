@@ -27,16 +27,16 @@ const CheckoutPage = () => {
             <li key={index} style={{ marginBottom: "10px" }}>
               <img src={item.image} alt={item.title} style={{ width: "40px", height: "40px", marginRight: "10px" }} />
               <span>{item.title}</span> - 
-              <span style={{
-                backgroundColor: "#ec2261",
-                color: "white",
-                borderRadius: "12px",
-                padding: "2px 8px",
-                marginLeft: "10px",
-                fontSize: "12px"
-              }}>
-                {item.quantity}
-                < /span> 
+              <span
+                  style={{
+                    backgroundColor: "#ec2261",
+                    color: "white",
+                    borderRadius: "12px",
+                    padding: "2px 8px",
+                    marginLeft: "10px",
+                    fontSize: "12px"
+                  }}
+              >{item.quantity}  </span> 
                 
                  x ₹{item.price}
             </li>
