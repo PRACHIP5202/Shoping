@@ -37,7 +37,7 @@ const CheckoutPage = () => {
   
       // 3. Get and show the response from backend
       const result = await res.json(); // got it!!!
-      console.log("I should receive it in console of front end n it is wt we send from backend, pasted in Postman", result);
+      console.log("I should receive it in console of front end n it is wt we send from backend, pasted in Postman, along with the 201 error msg", result);
     } catch (err) {
       console.error("Error sending order:", err);
     }
