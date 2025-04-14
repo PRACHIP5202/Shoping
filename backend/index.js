@@ -7,6 +7,18 @@ import cors from 'cors';
 import connectDB from './config/db.js';
 connectDB();
 
+import mongoose from 'mongoose';
+
+mongoose.connect('mongodb://localhost:27017/shoppingDB')
+.then(()=> {
+    console.log("MongoDB connected successfully");
+})
+.catch((error)=> {
+    console.log("MongoDB connection failed", error.message);
+    process.exit(1);
+});
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
