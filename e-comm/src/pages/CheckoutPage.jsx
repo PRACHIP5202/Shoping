@@ -18,13 +18,11 @@ const CheckoutPage = () => {
 
   const sendOrderToBackend = async () => {
     const orderData = {
-      userId: "123",
-      items: [
-        { productId: "frontend_data re", quantity: 2 },
-        { productId: "Should receive in backend n vs terminal", quantity: 1 }
-      ],
-      total: 999
-    };
+      name: formData.name,
+      address: formData.address,
+      payment: formData.payment,
+      items: cartItems,
+    }
   
     try {
       const res = await fetch("http://localhost:5000/orders", { // where to send? wt to send? wt is the formate? 
