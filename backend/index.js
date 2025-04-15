@@ -9,6 +9,8 @@ connectDB();
 
 import mongoose from 'mongoose';
 
+import router from './api/order.js'; 
+
 mongoose.connect('mongodb://localhost:27017/shoppingDB')
 .then(()=> {
     console.log("MongoDB connected successfully");
@@ -22,6 +24,8 @@ mongoose.connect('mongodb://localhost:27017/shoppingDB')
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/orders", router); // Mount the order router on the /api/orders path
 
 // app.get("/qqq", (req, res)=> {              //req- request , res- response
 //     res.json({messgae: "Helo world"});
