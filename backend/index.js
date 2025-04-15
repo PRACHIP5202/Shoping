@@ -5,27 +5,18 @@ import cors from 'cors';
 // dotenv.config(); 
 
 import connectDB from './config/db.js';
-connectDB();
+connectDB();                                   // no need to inport connect() again here!! bcz of imported from db.js
 
-import mongoose from 'mongoose';
 
-import router from './api/order.js'; 
+import routerrr from './api/order.js'; 
 
-mongoose.connect('mongodb://localhost:27017/shoppingDB')
-.then(()=> {
-    console.log("MongoDB connected successfully");
-})
-.catch((error)=> {
-    console.log("MongoDB connection failed", error.message);
-    process.exit(1);
-});
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/orders", router); // Mount the order router on the /api/orders path
+app.use("/api/orders", routerrr); // Mount the order router on the /api/orders path
 
 // app.get("/qqq", (req, res)=> {              //req- request , res- response
 //     res.json({messgae: "Helo world"});
