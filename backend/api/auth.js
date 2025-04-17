@@ -2,9 +2,9 @@ import express from 'express';
 import bcrypt from 'bcrypt'; // For hashing passwords
 import User from '../models/User.js'; // Import the User model
 
-const router = express.Router();
+const router2 = express.Router();
 
-router.post('/signup', async(req, res) => {
+router2.post('/signup', async(req, res) => {
     const {name, email, password, address } = req.body;
 
     try {
@@ -38,5 +38,5 @@ router.post('/signup', async(req, res) => {
     }
 })
 
-export default router;
+export default router2;
 

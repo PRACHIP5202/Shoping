@@ -1,10 +1,10 @@
 import express from 'express';
 import Order from '../models/Order.js'; 
 
-const routerrr = express.Router();     // express.Router().post(...).get(...) 
+const router1 = express.Router();     // express.Router().post(...).get(...) 
 
 
-    routerrr.post('/', async (req, res) => {
+    router1.post('/', async (req, res) => {
         
         try {
             const order = new Order(req.body); // Create an order instance
@@ -16,7 +16,7 @@ const routerrr = express.Router();     // express.Router().post(...).get(...)
         res.status(500).json({ message: 'Error saving order', error }); // Handle errors
         }
     })
-    routerrr.get('/', async (req, res) => {
+    router1.get('/', async (req, res) => {
         try {
         const orders = await Order.find(); // Fetch all orders from the database
         res.status(200).json(orders); // Send back the orders as a response
@@ -25,4 +25,4 @@ const routerrr = express.Router();     // express.Router().post(...).get(...)
         }
     });
 
-    export default routerrr;
+    export default router1;
