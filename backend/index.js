@@ -10,8 +10,9 @@ connectDB();                                   // no need to inport connect() ag
 
 import routerrr from './api/order.js'; 
 
-import router from './api/Auth.js'; // Import the auth router
+import router from './api/Auth.js'; 
 
+import router3 from './route/login.js'; 
 
 const app = express();
 app.use(cors());
@@ -22,7 +23,9 @@ app.use("/api/orders", routerrr); // Mount the order router on the /api/orders p
 // app.get("/qqq", (req, res)=> {              //req- request , res- response
 //     res.json({messgae: "Helo world"});
 // })
-app.use("/api", router); // Mount the auth router on the /api path
+app.use("/api", router);
+
+app.use("/api", router3);
 
 
 app.post("/orders", (req, res) => {

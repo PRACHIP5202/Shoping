@@ -3,11 +3,24 @@ import bcrypt from 'bcrypt'; // For hashing passwords
 import jwt from 'jsonwebtoken'; // For generating JWT tokens
 import User from '../models/User.js'; // Import the User model
 
-const router = express.Router();
+const router3 = express.Router();
 
-router.post('/login', async(req , res) => {
+router3.post('/login', async(req , res) => {
     const { email, password } = req.body;
+
     try{
+
+        const user = await User.findOne({email});                                                               //imp
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid email or password' });         // always return as response i.e. res.status().json();
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);                                   //imp
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+        
+        const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1h' });                       //imp
+        res.status(200).json({ token, user });
 
     }catch(error){
         console.error('Error logging in:', error);
@@ -15,15 +28,24 @@ router.post('/login', async(req , res) => {
     }
 });
 
-export default router; 
+export default router3; 
 
 
-// In backend wt happens is:
-// 1. Define a model n schema for db in models/smthing.js  (.Schema n then .model is exported )
-// 2. Define the routes in api/smthing.js  (reffer above written code)
-// 3. Define the server in index.js      
-//     ( 
-//         import router from './api/order.js'; 
-//         app.use("/api", routerrr);     [it is found in 'http://localhost:5000/api/{followed by wtever is written in router.post('', '...') }']
-//     )
-// 4. Define the db connection in config/db.js    (here connection b/w backend n mongodb is established)
+// import express from 'express';
+// import bcrypt from 'bcrypt'; // For hashing passwords
+// import jwt from 'jsonwebtoken'; // For generating JWT tokens
+// import User from '../models/User.js'; // Import the User model
+
+// const router = express.Router();
+
+// router.post('/login', async(req , res) => {
+//     const { email, password } = req.body;
+//     try{
+
+//     }catch(error){
+//         console.error('Error logging in:', error);
+//         res.status(500).json({ message: 'Error logging in', error });
+//     }
+// });
+
+// export default router; 
