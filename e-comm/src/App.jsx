@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import CheckoutPage from './pages/CheckoutPage'
 import SuccessPage from './pages/SuccessPage'
 import { CartProvider } from './context/CartContext'
+import OrdersDashboard from './pages/OrderDashBoard'
 function App() {
 
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/chat" element={<Chatbot/>} /> 
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/success" element={<SuccessPage />} />
+          <Route path="/dashboard" element={<OrdersDashboard />} />
           </Routes>
         </CartProvider>
        

@@ -25,7 +25,7 @@ const CheckoutPage = () => {
     }
   
     try {
-      const res = await fetch("http://localhost:5000/orders", { // where to send? wt to send? wt is the formate? 
+      const res = await fetch("http://localhost:5000/api/orders", { // where to send? wt to send? wt is the formate? 
         method: "POST", // we’re POSTing (not GET)
         headers: {
           "Content-Type": "application/json" // we are sending JSON data

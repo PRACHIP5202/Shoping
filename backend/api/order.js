@@ -7,8 +7,11 @@ const routerrr = express.Router();     // express.Router().post(...).get(...)
     routerrr.post('/', async (req, res) => {
         
         try {
-            const savedOrder = await Order.create(req.body); // Create a new order using the data sent in the request body
-        res.status(201).json(savedOrder); // Send back the saved order as a response
+            const order = new Order(req.body); // Create an order instance
+            const savedOrder = await order.save(); // Save to DB
+            console.log("Saved to MongoDB:", savedOrder);
+            res.status(201).json(savedOrder);
+
         } catch (error) {
         res.status(500).json({ message: 'Error saving order', error }); // Handle errors
         }
